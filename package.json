@@ -1,0 +1,49 @@
+{
+  "name": "locapoc",
+  "version": "1.0.0",
+  "description": "Proof of concept for a local app",
+  "type": "module",
+  "main": "locapoc.js",
+  "scripts": {
+    "dev": "node build/locapoc.js --port 2022 --directory ./webui",
+    "test": "sh ./tests/test_locapoc.sh",
+    "build": "tsc --project src",
+    "bundle": "esbuild build/locapoc.js --bundle --platform=node --outfile=dist/server/locapoc.cjs",
+    "run_dist": "node dist/locapoc.cjs --port 2022 --directory ./webui",
+    "zip_package": "./zip_package.sh",
+    "make_all": "run-s build bundle zip_package",
+    "clean": "rimraf build dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlyoleg/locapoc.git"
+  },
+  "keywords": [
+    "poc",
+    "proof of concept",
+    "local app",
+    "web ui",
+    "rest api",
+    "static content",
+    "standalone"
+  ],
+  "author": "charlyoleg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlyoleg/locapoc/issues"
+  },
+  "homepage": "https://github.com/charlyoleg/locapoc#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.7.16",
+    "@types/yargs": "^17.0.12",
+    "esbuild": "^0.15.7",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3"
+  },
+  "Dependencies": {
+    "express": "^4.18.1",
+    "yargs": "^17.5.1"
+  }
+}

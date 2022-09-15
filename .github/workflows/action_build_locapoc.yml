@@ -1,0 +1,34 @@
+# action_build_locapoc.yml
+
+name: Github Actions Building locapoc
+on: [push]
+jobs:
+  locapoc-builder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "info - event_name - ${{ github.event_name }}"
+      - run: echo "info - runner.os  - ${{ runner.os }}"
+      - run: echo "info - branch ref - ${{ github.ref }}"
+      - run: echo "info - repository - ${{ github.repository }}"
+      - run: echo "info - status     - ${{ job.status }}"
+      - run: ls ${{ github.workspace }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm i
+      - run: npm run
+      - run: npm run make_all
+      - run: ls ${{ github.workspace }}
+      - name: Archive the locapoc.cjs
+        uses: actions/upload-artifact@v3
+        with:
+          name: locapoc.cjs
+          path: dist/locapoc.cjs
+      - name: Archive the example1.zip
+        uses: actions/upload-artifact@v3
+        with:
+          name: example1_v1.zip
+          path: tmp/example1.zip
+      - run: echo "info - status     - ${{ job.status }}"
+
