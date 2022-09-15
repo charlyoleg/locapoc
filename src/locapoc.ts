@@ -72,52 +72,60 @@ if (! fs.existsSync(argv.directory)) {
   process.exit(-1);
 }
 
-// port-number logic
-let portnumber = argv.port;
-if (portnumber === 0){
-  portnumber = await getport();
-}
+// useless main function to avoid the top-level await issue by bundling with esbuild
+async function main(){
+
+  // port-number logic
+  let portnumber = argv.port;
+  if (portnumber === 0){
+    portnumber = await getport();
+  }
 
 
-// the main
-const app = express();
+  // the main
+  const app = express();
 
-// tell the browser to allow CORS for any origin
-if (argv.cors) {
-  console.log("INFO856: CORS (cross origin resource sharing) are permitted.");
-  app.use("/", (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
+  // tell the browser to allow CORS for any origin
+  if (argv.cors) {
+    console.log("INFO856: CORS (cross origin resource sharing) are permitted.");
+    app.use("/", (req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      next();
+    });
+  } else {
+    console.log("INFO328: CORS (cross origin resource sharing) are not permitted.");
+  }
+
+  // middleware myrest
+  app.use('/api/myrest', myrest);
+
+  // rest-api endpoint /api/quit
+  app.post('/api/quit', (req, res) => {
+    stop_the_app();
+    return res.send('The http-server will quit in a second');
   });
-} else {
-  console.log("INFO328: CORS (cross origin resource sharing) are not permitted.");
+
+  // static content
+  app.use(express.static(argv.directory));
+
+  // spin the http-server
+  app.listen(portnumber, argv.host, () => {
+    console.log(`locapoc serves on port ${portnumber} for host ${argv.host} the directory ${argv.directory} ...`);
+  });
+
+
+  // open the browser
+  await sleep(1000);
+  const url = `http://localhost:${portnumber}`;
+  if (argv.browser) {
+    console.log(`Your browser should open automatically at ${url}`);
+    await open(url);
+  } else {
+    console.log(`Please, open the browser at ${url}`);
+  }
+
 }
 
-// middleware myrest
-app.use('/api/myrest', myrest);
+main();
 
-// rest-api endpoint /api/quit
-app.post('/api/quit', (req, res) => {
-  stop_the_app();
-  return res.send('The http-server will quit in a second');
-});
-
-// static content
-app.use(express.static(argv.directory));
-
-// spin the http-server
-app.listen(portnumber, argv.host, () => {
-  console.log(`locapoc serves on port ${portnumber} for host ${argv.host} the directory ${argv.directory} ...`);
-});
-
-
-// open the browser
-await sleep(1000);
-const url = `http://localhost:${portnumber}`;
-if (argv.browser) {
-  console.log(`Your browser should open automatically at ${url}`);
-  await open(url);
-} else {
-  console.log(`Please, open the browser at ${url}`);
-}
 
