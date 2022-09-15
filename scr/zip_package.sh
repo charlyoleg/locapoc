@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # zip_package.sh
 
-cd $(dirname $0)
+cd $(dirname $0)/..
 
 if [[ ! -f dist/locapoc.cjs ]]; then
   echo "ERR045: Error, the file dist/locapoc.cjs doesn't exist!"

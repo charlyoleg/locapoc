@@ -10,7 +10,7 @@
     "build": "tsc --project src",
     "bundle": "esbuild build/locapoc.js --bundle --platform=node --outfile=dist/server/locapoc.cjs",
     "run_dist": "node dist/locapoc.cjs --port 2022 --directory ./webui",
-    "zip_package": "./zip_package.sh",
+    "zip_package": "scr/zip_package.sh",
     "make_all": "run-s build bundle zip_package",
     "clean": "rimraf build dist"
   },
