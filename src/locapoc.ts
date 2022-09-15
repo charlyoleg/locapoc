@@ -5,6 +5,7 @@ import { hideBin } from 'yargs/helpers';
 import fs from 'node:fs';
 import process from 'node:process';
 import express from 'express';
+import open from 'open';
 
 
 // sub-routines
@@ -110,6 +111,7 @@ await sleep(1000);
 const url = `http://localhost:${portnumber}`;
 if (argv.browser) {
   console.log(`Your browser should open automatically at ${url}`);
+  await open(url);
 } else {
   console.log(`Please, open the browser at ${url}`);
 }
