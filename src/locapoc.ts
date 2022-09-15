@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import process from 'node:process';
 import express from 'express';
 import open from 'open';
+import getport from 'get-port';
 
 
 // sub-routines
@@ -73,7 +74,7 @@ if (! fs.existsSync(argv.directory)) {
 // port-number logic
 let portnumber = argv.port;
 if (portnumber === 0){
-  portnumber = 8000;
+  portnumber = await getport();
 }
 
 

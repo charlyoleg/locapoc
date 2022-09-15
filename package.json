@@ -35,6 +35,7 @@
   "homepage": "https://github.com/charlyoleg/locapoc#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "get-port": "^6.1.2",
     "open": "^8.4.0",
     "yargs": "^17.5.1"
   },
