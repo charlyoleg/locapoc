@@ -7,6 +7,7 @@ import process from 'node:process';
 import express from 'express';
 import open from 'open';
 import getport from 'get-port';
+import myrest from './myrest.js';
 
 
 // sub-routines
@@ -91,6 +92,9 @@ if (argv.cors) {
 } else {
   console.log("INFO328: CORS (cross origin resource sharing) are not permitted.");
 }
+
+// middleware myrest
+app.use('/api/myrest', myrest);
 
 // rest-api endpoint /api/quit
 app.post('/api/quit', (req, res) => {
