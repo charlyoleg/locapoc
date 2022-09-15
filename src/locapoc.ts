@@ -5,6 +5,13 @@ import { hideBin } from 'yargs/helpers';
 import fs from 'node:fs';
 import express from 'express';
 
+
+// sub-routines
+function sleep(ms:number){
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 // cli
 const argv = yargs(hideBin(process.argv))
   //.scriptName("locapoc")
@@ -46,7 +53,7 @@ const argv = yargs(hideBin(process.argv))
   .parseSync();
 
 
-// sanity checks
+// sanity checks for argv.directory
 if (argv.directory === '') {
   console.error(`ERR334: Error, you must specify a not empty directory-path!`);
   process.exit(-1);
@@ -56,16 +63,51 @@ if (! fs.existsSync(argv.directory)) {
   process.exit(-1);
 }
 
+// port-number logic
+let portnumber = argv.port;
+if (portnumber === 0){
+  portnumber = 8000;
+}
+
+
 // the main
 const app = express();
+
 // tell the browser to allow CORS for any origin
-app.use("/", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+if (argv.cors) {
+  console.log("INFO856: CORS (cross origin resource sharing) are permitted.");
+  app.use("/", (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  });
+} else {
+  console.log("INFO328: CORS (cross origin resource sharing) are not permitted.");
+}
+
 // static content
 app.use(express.static(argv.directory));
-app.listen(argv.port, () => {
-  console.log(`Serving on port ${argv.port} the content of the directory ${argv.directory} ...`);
+
+// spin the http-server
+const server = app.listen(portnumber, argv.host, () => {
+  console.log(`locapoc serves on port ${portnumber} for host ${argv.host} the directory ${argv.directory} ...`);
 });
+
+await sleep(1000);
+const url = `http://localhost:${portnumber}`;
+if (argv.browser) {
+  console.log(`Your browser should open automatically at ${url}`);
+} else {
+  console.log(`Please, open the browser at ${url}`);
+}
+
+await sleep(3000);
+server.close((err) => {
+  console.log('Closing the http-server ...');
+  console.log(err);
+  console.log('The http-server is stopped');
+  });
+
+await sleep(1000);
+console.log('Soon the end!');
+
 
