@@ -3,12 +3,18 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import fs from 'node:fs';
+import process from 'node:process';
 import express from 'express';
 
 
 // sub-routines
 function sleep(ms:number){
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function stop_the_app() {
+  await sleep(1000);
+  process.exit(0);
 }
 
 
@@ -84,14 +90,22 @@ if (argv.cors) {
   console.log("INFO328: CORS (cross origin resource sharing) are not permitted.");
 }
 
+// rest-api endpoint /api/quit
+app.post('/api/quit', (req, res) => {
+  stop_the_app();
+  return res.send('The http-server will quit in a second');
+});
+
 // static content
 app.use(express.static(argv.directory));
 
 // spin the http-server
-const server = app.listen(portnumber, argv.host, () => {
+app.listen(portnumber, argv.host, () => {
   console.log(`locapoc serves on port ${portnumber} for host ${argv.host} the directory ${argv.directory} ...`);
 });
 
+
+// open the browser
 await sleep(1000);
 const url = `http://localhost:${portnumber}`;
 if (argv.browser) {
@@ -99,15 +113,4 @@ if (argv.browser) {
 } else {
   console.log(`Please, open the browser at ${url}`);
 }
-
-await sleep(3000);
-server.close((err) => {
-  console.log('Closing the http-server ...');
-  console.log(err);
-  console.log('The http-server is stopped');
-  });
-
-await sleep(1000);
-console.log('Soon the end!');
-
 
