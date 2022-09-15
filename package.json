@@ -9,7 +9,7 @@
     "run": "node build/locapoc.js --port 2022 --directory ./webui",
     "test": "sh ./tests/test_locapoc.sh",
     "bundle": "esbuild build/locapoc.js --bundle --platform=node --outfile=dist/server/locapoc.cjs",
-    "run_dist": "node dist/locapoc.cjs --port 2022 --directory ./webui",
+    "run_dist": "node dist/server/locapoc.cjs --port 2022 --directory ./webui",
     "zip_package": "scr/zip_package.sh",
     "make_all": "run-s build bundle zip_package",
     "clean": "rimraf build dist"
