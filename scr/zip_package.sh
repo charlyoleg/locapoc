@@ -11,17 +11,18 @@ fi
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 ZIPNAME="locapoc_v1.2.3.9_${TIMESTAMP}"
+NODEAPP="${ZIPNAME}/locapoc"
 
 ### copy files
-mkdir -p dist/${ZIPNAME}
+mkdir -p dist/${NODEAPP}
 cd dist
-cp -a ../webui ${ZIPNAME}/
-cp ../dist/bundle/locapoc.cjs ${ZIPNAME}/
+cp -a ../webui ${NODEAPP}/
+cp ../dist/bundle/locapoc.cjs ${NODEAPP}/
 cp ../scr/linux_runs_locapoc.sh ${ZIPNAME}/
 cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
 
 ### fingerprint
-cat << EOF > ${ZIPNAME}/webui/locapoc_fingerprint.txt
+cat << EOF > ${NODEAPP}/webui/locapoc_fingerprint.txt
 > Fingerprint of ${ZIPNAME}
 > timestamp: ${TIMESTAMP}
 > git-remote-url: $(git remote get-url origin)
