@@ -3,9 +3,9 @@
 
 cd $(dirname $0)/..
 
-if [[ ! -f dist/server/locapoc.cjs ]]; then
-  echo "ERR045: Error, the file dist/server/locapoc.cjs doesn't exist!"
-  echo "first run : npm run build"
+if [[ ! -f dist/bundle/locapoc.cjs ]]; then
+  echo "ERR045: Error, the file dist/bundle/locapoc.cjs doesn't exist!"
+  echo "first run : npm run dist:bundle"
   exit -1
 fi
 
