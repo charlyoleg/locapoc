@@ -5,11 +5,11 @@ set -e
 set -x
 
 uname -a
-bash --version
+#bash --version
 node -v
 npm -v
 
 cd $(dirname $0)
 pwd
-node locapoc.cjs --directory webui --browser
+node locapoc.cjs --directory=webui --browser=true
 

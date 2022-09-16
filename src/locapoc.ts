@@ -29,12 +29,6 @@ const argv = yargs(hideBin(process.argv))
   .example([
     ["$0 -p 2022 -d MyPublic", "run the webserver on port 2022 and serve the content of the folder MyPublic"],
     ])
-  .option('port', {
-    alias: 'p',
-    type: 'number',
-    description: 'port-number used by this web-server. If set to 0 an available port-number is automatically selected',
-    default: 0
-    })
   .option('directory', {
     alias: 'd',
     type: 'string',
@@ -47,11 +41,23 @@ const argv = yargs(hideBin(process.argv))
     description: 'Open the browser at the corresponding URL.',
     default: true
     })
+  .option('quitable', {
+    alias: 'q',
+    type: 'boolean',
+    description: 'Enable the endpoint /api/quit to stop this http-server.',
+    default: true
+    })
   .option('cors', {
     alias: 'c',
     type: 'boolean',
     description: 'Set http-header to allow Cross Origin Resource Sharing (CORS).',
     default: false
+    })
+  .option('port', {
+    alias: 'p',
+    type: 'number',
+    description: 'port-number used by this web-server. If set to 0 an available port-number is automatically selected',
+    default: 0
     })
   .option('host', {
     type: 'string',
@@ -100,10 +106,12 @@ async function main(){
   app.use('/api/myrest', myrest);
 
   // rest-api endpoint /api/quit
-  app.post('/api/quit', (req, res) => {
-    stop_the_app();
-    return res.send('The http-server will quit in a second');
-  });
+  if (argv.quitable) {
+    app.post('/api/quit', (req, res) => {
+      stop_the_app();
+      return res.send('The http-server will quit in a second');
+    });
+  }
 
   // static content
   app.use(express.static(argv.directory));

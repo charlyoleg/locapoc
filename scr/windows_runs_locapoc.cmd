@@ -12,6 +12,6 @@ npm -v
 
 cd %~dp0
 pwd
-node locapoc.cjs --directory webui --browser
+node locapoc.cjs --directory=webui --browser=true
 
 

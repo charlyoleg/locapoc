@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# test_locapoc.sh
+# simple_requests.sh
 
 set -e
 set -x
@@ -8,6 +8,8 @@ set -x
 
 curl -i localhost:2022/index.html
 curl -i localhost:2022/api/myrest/greet?name=toto
-curl -X POST -i localhost:2022/api/quit
+#curl -X POST -i localhost:2022/api/quit
 
+echo ""
+echo "End of simple_requests.sh"
 
