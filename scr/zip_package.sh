@@ -23,12 +23,12 @@ cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
 
 ### fingerprint
 cat << EOF > ${NODEAPP}/webui/locapoc_fingerprint.txt
-> Fingerprint of ${ZIPNAME}
-> timestamp: ${TIMESTAMP}
-> git-remote-url: $(git remote get-url origin)
-> git-branch: $(git rev-parse --abbrev-ref HEAD)
-> git-last-hash: $(git rev-parse HEAD)
-> git-last-commit: $(git log -1)
+Fingerprint of ${ZIPNAME}
+timestamp: ${TIMESTAMP}
+git-remote-url: $(git remote get-url origin)
+git-branch: $(git rev-parse --abbrev-ref HEAD)
+git-last-hash: $(git rev-parse HEAD)
+git-last-commit: $(git log -1)
 EOF
 
 ### packaging
