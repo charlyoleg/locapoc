@@ -23,6 +23,6 @@ jobs:
       - name: Archive the locapoc.zip
         uses: actions/upload-artifact@v3
         with:
-          name: locapoc_${GITHUB_RUN_NUMBER}
+          name: locapoc_${{ github.run_number }}
           path: dist/locapoc_*.zip
       - run: echo "info - status     - ${{ job.status }}"
