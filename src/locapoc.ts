@@ -112,7 +112,7 @@ async function main() {
   if (argv.quitable) {
     app.post("/api/quit", (req, res) => {
       stop_the_app();
-      return res.send("The http-server will quit in a second");
+      return res.json({ msg: "The http-server will quit in a second" });
     });
   }
 
