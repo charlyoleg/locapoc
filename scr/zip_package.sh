@@ -16,7 +16,7 @@ ZIPNAME="locapoc_v1.2.3.9_${TIMESTAMP}"
 mkdir -p dist/${ZIPNAME}
 cd dist
 cp -a ../webui ${ZIPNAME}/
-cp ../dist/server/locapoc.cjs ${ZIPNAME}/
+cp ../dist/bundle/locapoc.cjs ${ZIPNAME}/
 cp ../scr/linux_runs_locapoc.sh ${ZIPNAME}/
 cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
 

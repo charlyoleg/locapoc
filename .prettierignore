@@ -1,0 +1,5 @@
+# .prettierignore of locqpoc
+node_modules
+build
+dist
+README.md
