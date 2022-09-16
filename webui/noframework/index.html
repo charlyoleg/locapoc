@@ -21,20 +21,19 @@
     <p class="instructions">Play with the rest-api myrest!</p>
     <section>
       <span>One name:</span>
-      <input type="text" id="name1">
-      <input type="button" value="Call greet" id="btn1">
-      <p id=response1></p>
+      <input type="text" id="name1" />
+      <input type="button" value="Call greet" id="btn1" />
+      <p id="response1"></p>
     </section>
     <section>
       <span>Other name:</span>
-      <input type="text" id="name2">
-      <input type="button" value="Call bye" id="btn2">
-      <p id=response2></p>
+      <input type="text" id="name2" />
+      <input type="button" value="Call bye" id="btn2" />
+      <p id="response2"></p>
     </section>
-      <input type="button" value="Quit" id="btn3">
-      <p id=response3></p>
-    <section>
-    </section>
+    <input type="button" value="Quit" id="btn3" />
+    <p id="response3"></p>
+    <section></section>
     <script>
       console.log("Hello from locapoc-webui");
       const name1 = document.querySelector("#name1");
@@ -45,8 +44,8 @@
       const response2 = document.querySelector("#response2");
       const button3 = document.querySelector("#btn3");
       // fetch a_url
-      async function restcall (a_url, a_options={method: "GET"}) {
-        console.log(`rest-api call : ${a_url}`)
+      async function restcall(a_url, a_options = { method: "GET" }) {
+        console.log(`rest-api call : ${a_url}`);
         try {
           const resp = await fetch(a_url, a_options);
           if (!resp.ok) {
@@ -60,22 +59,22 @@
         }
       }
       // action click
-      button1.addEventListener('click', async () => {
+      button1.addEventListener("click", async () => {
         const rjson = await restcall(`/api/myrest/greet?name=${name1.value}`);
         response1.innerHTML = rjson.msg;
-        });
-      button2.addEventListener('click', async () => {
+      });
+      button2.addEventListener("click", async () => {
         const rjson = await restcall(`/api/myrest/bye?name=${name2.value}`);
         response2.innerHTML = rjson.msg;
-        });
-      button3.addEventListener('click', async () => {
-        const rjson = await restcall(`/api/quit`, {method: "POST"});
+      });
+      button3.addEventListener("click", async () => {
+        const rjson = await restcall(`/api/quit`, { method: "POST" });
         response3.innerHTML = rjson.msg;
         setTimeout(() => {
           console.log("The current window will be closed soon!");
           window.close();
-          }, 1000);
-        });
+        }, 1000);
+      });
     </script>
   </body>
 </html>
