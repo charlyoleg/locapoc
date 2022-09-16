@@ -20,14 +20,9 @@ jobs:
       - run: npm run
       - run: npm run make_all
       - run: ls ${{ github.workspace }}
-      - name: Archive the locapoc.cjs
+      - name: Archive the locapoc.zip
         uses: actions/upload-artifact@v3
         with:
-          name: locapoc.cjs
-          path: dist/locapoc.cjs
-      - name: Archive the example1.zip
-        uses: actions/upload-artifact@v3
-        with:
-          name: example1_v1.zip
-          path: tmp/example1.zip
+          name: locapoc
+          path: dist/locapoc_*.zip
       - run: echo "info - status     - ${{ job.status }}"
