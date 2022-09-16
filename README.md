@@ -5,7 +5,7 @@ README of locapoc
 Presentation
 ------------
 
-*locapoc* is a small *nodejs* that let you deploy simply a *static web serve* for a local application. It helps you to distribute your applcation as a *zip-file*.
+*locapoc* is a Proof-of-Concept for a *nodejs* application intended to be used locally (i.e. on your own machine) that serves a *static content* and a rest-api. The focus is on the User eXperience for a local user for running the app and deploying it.
 
 *locapoc* is the contraction of *local application Proof-of-Concept*.
 
@@ -20,25 +20,26 @@ git clone https://github.com/charlyoleg/locapoc
 cd locapoc
 npm install
 npm run
-npm run build
-cd ..
-mkdir myApp
-cd myApp
-cp -a ../locapoc/tests/webui ./
-cp ../locapoc/dist/locapoc.cjs ./
-cp ../locapoc/scr/linux_runs_locapoc.sh ./
-cp ../locapoc/scr/windows_runs_locapoc.cmd ./
-# adapt the starter scripts to your wished port-number and content-folder
-vim linux_runs_locapoc.sh windows_runs_locapoc.cmd
-# test that your pure frontend app is working
-linux_runs_locapoc.sh
-# stop the server locapoc with ctrl-c
-cd ..
-zip -r myApp.zip myApp
-ls -l myApp.zip
-# you can distribute your frontend app as a zip!
+npm run make_all
+cp dist/locapoc_*.zip /tmp/
+cd /tmp
+unzip locapoc_*.zip
+cd locapoc_*
+./linux_starts_locapoc.sh
+# you can distribute your local app as a zip!
 ```
 
+If you want to use *locapoc* on a regular server, we recommend to following option values:
+
+```bash
+node build/locapoc.js \
+  --directory=./webui \
+  --brower=false      \
+  --quitable=false    \
+  --cors=true         \
+  --port=80           \
+  --host=0.0.0.0
+```
 
 Description
 -----------
