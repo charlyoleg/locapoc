@@ -3,7 +3,7 @@
 
 ### check if node-js is installed
 node -v
-if [ $0 -ne 0 ]; then
+if [ $? -ne 0 ]; then
   echo "ERR787: Error, node-js is not installed"
   echo "Please, install node-js v16 or above"
   exit 1
@@ -16,7 +16,7 @@ for iproc in ${OLDPROCESS}; do
   kill ${iproc}
 done
 sleep 1
-OLDPROCESS=$(ps aux | grep locapoc)
+OLDPROCESS=$(ps aux | grep node | grep locapoc)
 if [ "ABC${OLDPROCESS}" = "ABC" ]; then
   echo "No remaining old process"
 else
