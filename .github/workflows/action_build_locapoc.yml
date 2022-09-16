@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: "16"
       - run: npm i
       - run: npm run
       - run: npm run make_all
@@ -31,4 +31,3 @@ jobs:
           name: example1_v1.zip
           path: tmp/example1.zip
       - run: echo "info - status     - ${{ job.status }}"
-
