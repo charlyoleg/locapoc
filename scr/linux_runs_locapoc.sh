@@ -10,7 +10,7 @@ if [ $? -ne 0 ]; then
 fi
 
 ### kill the old remaining process
-OLDPROCESS=$(ps aux | grep node | grep locapoc)
+OLDPROCESS=$(ps aux | grep node | grep locapoc | awk '{print $2}')
 for iproc in ${OLDPROCESS}; do
   echo "Kill process ${iproc}"
   kill ${iproc}
