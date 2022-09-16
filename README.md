@@ -41,6 +41,9 @@ node build/locapoc.js \
   --host=0.0.0.0
 ```
 
+For running *only* a *static webserver* on a *regular server*, you can also look at [standStat](https://github.com/charlyoleg/standStat) or [nginx](http://hg.nginx.org/nginx/).
+
+
 Description
 -----------
 
