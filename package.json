@@ -19,6 +19,7 @@
     "zip_package": "scr/zip_package.sh",
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
     "make_all": "run-s build lint prettier:check dist:build dist:bundle zip_package",
+    "full_loop": "run-s clean make_all run_package",
     "clean": "rimraf build dist"
   },
   "repository": {

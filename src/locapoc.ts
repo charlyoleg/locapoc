@@ -135,6 +135,9 @@ async function main() {
   } else {
     console.log(`Please, open the browser at ${url}`);
   }
+
+  // final message
+  console.log("Press ctrl-c to stop this http-server ...");
 }
 
 main();
