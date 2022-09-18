@@ -2,7 +2,7 @@
 
 import express from "express";
 import swaggerUi from "swagger-ui-express";
-//import swaggerDocument from "../swagger.json";
+//import swaggerDocument from "../swagger.json" assert { type: "json" };
 import swaggerJsdoc from "swagger-jsdoc";
 import open from "open";
 
