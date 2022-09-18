@@ -109,15 +109,15 @@ async function main() {
   app.use("/api/myrest", myrest);
 
   // rest-api endpoint /api/quit
-/**
- *  @openapi
- *  /api/quit:
- *    post:
- *      description: quit the current http-server
- *      responses:
- *        200:
- *          description: Return a json with a msg
- */
+  /**
+   *  @openapi
+   *  /api/quit:
+   *    post:
+   *      description: quit the current http-server
+   *      responses:
+   *        200:
+   *          description: Return a json with a msg
+   */
   if (argv.quitable) {
     app.post("/api/quit", (req, res) => {
       stop_the_app();
