@@ -10,7 +10,7 @@ const router = express.Router();
  *    get:
  *      summary: generate a synpatic string
  *      parameters:
- *        - in: quey
+ *        - in: query
  *          name: name
  *          schema:
  *            type: string
@@ -36,7 +36,7 @@ router.get("/greet", (req, res) => {
  *    get:
  *      summary: generate a surprising string
  *      parameters:
- *        - in: quey
+ *        - in: query
  *          name: name
  *          schema:
  *            type: string
