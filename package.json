@@ -9,6 +9,7 @@
     "doc:swagger:ui": "node docs/swagger_ui.js",
     "build": "tsc --build src/tsconfig.json",
     "run": "node build/locapoc.js --port 2022 --directory ./webui",
+    "run_for_swagger": "node build/locapoc.js --port 2022 --directory ./webui -c -b0",
     "test_simple": "./tests/simple_requests.sh",
     "test_quit": "./tests/quit_request.sh",
     "test": "run-s test_simple test_quit",
