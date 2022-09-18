@@ -5,6 +5,7 @@
   "type": "module",
   "main": "locapoc.js",
   "scripts": {
+    "doc:swagger": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
     "build": "tsc --build src/tsconfig.json",
     "run": "node build/locapoc.js --port 2022 --directory ./webui",
     "test_simple": "./tests/simple_requests.sh",
@@ -59,6 +60,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
+    "swagger-jsdoc": "^6.2.5",
     "typescript": "^4.8.3"
   }
 }
