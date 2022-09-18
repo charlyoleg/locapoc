@@ -5,20 +5,19 @@ import swaggerUi from "swagger-ui-express";
 //import swaggerDocument from "../swagger.json";
 import swaggerJsdoc from "swagger-jsdoc";
 
-
 const portnumber = 8000;
 
 const options = {
   failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.
   definition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'The myrest-API',
-      version: '0.2.0',
-      description: 'an example REST-API integrated in locapoc'
+      title: "The myrest-API",
+      version: "0.2.0",
+      description: "an example REST-API integrated in locapoc",
     },
   },
-  apis: ['./src/*.ts'],
+  apis: ["./src/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
