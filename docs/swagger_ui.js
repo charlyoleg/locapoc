@@ -4,6 +4,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 //import swaggerDocument from "../swagger.json";
 import swaggerJsdoc from "swagger-jsdoc";
+import open from "open";
 
 const portnumber = 8000;
 
@@ -30,3 +31,6 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.listen(portnumber, () => {
   console.log(`swagger_ui serves on port ${portnumber}  ...`);
 });
+
+// open the browser
+await open("http://localhost:8000");
