@@ -20,8 +20,9 @@ const options = {
     servers: [
       {
         url: "http://localhost:2022",
-        description: "the development server of locapoc with its fetish port-number"
-      }
+        description:
+          "the development server of locapoc with its fetish port-number",
+      },
     ],
   },
   apis: ["./src/*.ts"],
