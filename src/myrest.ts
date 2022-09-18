@@ -8,10 +8,23 @@ const router = express.Router();
  *  @openapi
  *  /api/myrest/greet:
  *    get:
- *      description: generate a synpatic string
+ *      summary: generate a synpatic string
+ *      parameters:
+ *        - in: quey
+ *          name: name
+ *          schema:
+ *            type: string
+ *          description: the name of the person to greet
  *      responses:
- *        200:
- *          description: Return a json with a msg
+ *        '200':
+ *          description: OK with a small message
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  msg:
+ *                    type: string
  */
 router.get("/greet", (req, res) => {
   res.json({ msg: `Hello ${req.query.name} !` });
@@ -20,11 +33,24 @@ router.get("/greet", (req, res) => {
 /**
  *  @openapi
  *  /api/myrest/bye:
- *    post:
- *      description: generate a surprising string
+ *    get:
+ *      summary: generate a surprising string
+ *      parameters:
+ *        - in: quey
+ *          name: name
+ *          schema:
+ *            type: string
+ *          description: the name of the person to greet
  *      responses:
- *        200:
- *          description: Return a json with a msg
+ *        '200':
+ *          description: OK with a small message
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  msg:
+ *                    type: string
  */
 router.get("/bye", (req, res) => {
   res.json({ msg: `Bye ${req.query.name} !` });

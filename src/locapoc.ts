@@ -115,8 +115,15 @@ async function main() {
    *    post:
    *      description: quit the current http-server
    *      responses:
-   *        200:
-   *          description: Return a json with a msg
+   *        '200':
+   *          description: OK with a small message
+   *          content:
+   *            application/json:
+   *              schema:
+   *                type: object
+   *                properties:
+   *                  msg:
+   *                    type: string
    */
   if (argv.quitable) {
     app.post("/api/quit", (req, res) => {
