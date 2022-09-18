@@ -5,7 +5,8 @@
   "type": "module",
   "main": "locapoc.js",
   "scripts": {
-    "doc:swagger": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
+    "doc:swagger:json": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
+    "doc:swagger:ui": "node docs/swagger_ui.js",
     "build": "tsc --build src/tsconfig.json",
     "run": "node build/locapoc.js --port 2022 --directory ./webui",
     "test_simple": "./tests/simple_requests.sh",
