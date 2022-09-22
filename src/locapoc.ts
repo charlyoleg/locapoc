@@ -72,13 +72,11 @@ const argv = yargs(hideBin(process.argv))
   .parseSync();
 
 // sanity checks for argv.directory
-if (argv.directory === "") {
-  console.error(`ERR334: Error, you must specify a not empty directory-path!`);
-  process.exit(-1);
-}
-if (!fs.existsSync(argv.directory)) {
-  console.error(`ERR339: Error, the path ${argv.directory} doesn't exist!`);
-  process.exit(-1);
+if (argv.directory !== "") {
+  if (!fs.existsSync(argv.directory)) {
+    console.error(`ERR339: Error, the path ${argv.directory} doesn't exist!`);
+    process.exit(-1);
+  }
 }
 
 // useless main function to avoid the top-level await issue by bundling with esbuild
@@ -133,7 +131,9 @@ async function main() {
   }
 
   // static content
-  app.use(express.static(argv.directory));
+  if (argv.directory !== "") {
+    app.use(express.static(argv.directory));
+  }
 
   // spin the http-server
   app.listen(portnumber, argv.host, () => {
