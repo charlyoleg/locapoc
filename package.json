@@ -23,7 +23,7 @@
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
     "make_all": "run-s build lint prettier:check dist:build dist:bundle zip_package",
     "full_loop": "run-s clean make_all run_package",
-    "clean": "rimraf build dist swagger.json"
+    "clean": "shx rm -fr build dist swagger.json"
   },
   "repository": {
     "type": "git",
@@ -61,7 +61,7 @@
     "eslint-config-prettier": "^8.5.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
+    "shx": "^0.3.4",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
     "typescript": "^4.8.3"
