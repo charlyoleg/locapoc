@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Proof of concept for a local app",
   "type": "module",
-  "main": "locapoc.js",
+  "main": "dist/bundle/locapoc.cjs",
+  "bin": {
+    "locapoc": "dist/bundle/locapoc.cjs"
+  },
+  "files": [
+    "webui/"
+  ],
   "scripts": {
     "doc:swagger:json": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
     "doc:swagger:ui": "node docs/swagger_ui.js",
