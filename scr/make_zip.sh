@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# zip_package.sh
+# make_zip.sh
 
 cd $(dirname $0)/..
 

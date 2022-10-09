@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "Proof of concept for a local app",
   "type": "module",
-  "main": "dist/bundle/locapoc.cjs",
+  "main": "src/myrest.ts",
   "bin": {
-    "locapoc": "dist/bundle/locapoc.cjs"
+    "locapoc": "dist/bin/bincli.cjs"
   },
   "files": [
-    "webui/"
+    "dist/bin/webui/"
   ],
   "scripts": {
     "doc:swagger:json": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
@@ -25,9 +25,10 @@
     "dist:build": "tsc --build src/tsconfig.dist.json",
     "dist:bundle": "esbuild dist/build/locapoc.js --bundle --platform=node --outfile=dist/bundle/locapoc.cjs",
     "run_dist": "node dist/bundle/locapoc.cjs --port 2022 --directory ./webui",
-    "zip_package": "scr/zip_package.sh",
+    "make_bin": "scr/make_bin.sh",
+    "zip_package": "scr/make_zip.sh",
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
-    "make_all": "run-s build lint prettier:check dist:build dist:bundle zip_package",
+    "make_all": "run-s build lint prettier:check dist:build dist:bundle make_bin zip_package",
     "full_loop": "run-s clean make_all run_package",
     "clean": "shx rm -fr build dist swagger.json"
   },
