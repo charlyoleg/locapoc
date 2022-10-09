@@ -1,6 +1,6 @@
 {
   "name": "locapoc",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Proof of concept for a local app",
   "type": "module",
   "main": "dist/bundle/locapoc.cjs",
