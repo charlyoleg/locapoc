@@ -30,6 +30,7 @@
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
     "make_all": "run-s build lint prettier:check dist:build dist:bundle make_bin zip_package",
     "full_loop": "run-s clean make_all run_package",
+    "prepublish": "run-s clean make_all",
     "clean": "shx rm -fr build dist swagger.json"
   },
   "repository": {
