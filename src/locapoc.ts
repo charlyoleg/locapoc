@@ -8,6 +8,12 @@ import express from "express";
 import open from "open";
 import getport from "get-port";
 import myrest from "./myrest.js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // sub-routines
 function sleep(ms: number) {
@@ -34,7 +40,7 @@ const argv = yargs(hideBin(process.argv))
     alias: "d",
     type: "string",
     description: "path to the directory to be served.",
-    default: "",
+    default: `${__dirname}/webui`,
   })
   .option("browser", {
     alias: "b",

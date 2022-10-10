@@ -3,13 +3,16 @@
   "version": "0.1.4",
   "description": "Proof of concept for a local app",
   "type": "module",
-  "main": "src/myrest.ts",
+  "main": "dist/build/myrest.js",
   "bin": {
-    "locapoc": "dist/bin/bincli.cjs"
+    "locapoc": "dist/bin/bincli.mjs"
   },
   "files": [
     "dist/bin/webui/"
   ],
+  "engines": {
+    "node": ">=16.12.0"
+  },
   "scripts": {
     "doc:swagger:json": "swagger-jsdoc -d src/swaggerDefinition.cjs src/*.ts",
     "doc:swagger:ui": "node docs/swagger_ui.js",
@@ -23,14 +26,14 @@
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check .",
     "dist:build": "tsc --build src/tsconfig.dist.json",
-    "dist:bundle": "esbuild dist/build/locapoc.js --bundle --platform=node --outfile=dist/bundle/locapoc.cjs",
-    "run_dist": "node dist/bundle/locapoc.cjs --port 2022 --directory ./webui",
+    "dist:bundle": "esbuild src/locapoc.ts --bundle --platform=node --format=esm --outfile=dist/bundle/locapoc.mjs",
+    "run_dist": "node dist/bundle/locapoc.mjs --port 2022 --directory ./webui",
     "make_bin": "scr/make_bincli.sh",
-    "zip_package": "scr/make_zip.sh",
+    "make_zip": "scr/make_zip.sh",
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
-    "make_all": "run-s build lint prettier:check dist:build dist:bundle make_bin zip_package",
+    "make_all": "run-s build lint prettier:check dist:build dist:bundle make_bin make_zip",
     "full_loop": "run-s clean make_all run_package",
-    "prepublish": "run-s clean make_all",
+    "clean_make_all": "run-s clean make_all",
     "clean": "shx rm -fr build dist swagger.json"
   },
   "repository": {

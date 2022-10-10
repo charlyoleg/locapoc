@@ -3,18 +3,21 @@
 
 cd $(dirname $0)/..
 
-if [[ ! -f dist/bundle/locapoc.cjs ]]; then
-  echo "ERR045: Error, the file dist/bundle/locapoc.cjs doesn't exist!"
-  echo "first run : npm run dist:bundle"
-  exit -1
-fi
+#if [[ ! -f build/locapoc.js ]]; then
+#  echo "ERR049: Error, the file build/locapoc.js doesn't exist!"
+#  echo "first run : npm run build"
+#  exit -1
+#fi
 
+npx esbuild src/locapoc.ts \
+  --bundle \
+  --platform=node \
+  --format=esm \
+  --banner:js="#! /usr/bin/env node" \
+  --outfile=dist/bin/bincli.mjs
 
 ### copy files
-mkdir -p dist/bin
-cd dist
-cp -a ../webui bin/
-cp ../scr/bincli.cjs bin/
-cat ../dist/bundle/locapoc.cjs >> bin/bincli.cjs
-ls -l bin
+#mkdir -p dist/bin
+cp -a webui dist/bin/
+ls -l dist/bin
 
