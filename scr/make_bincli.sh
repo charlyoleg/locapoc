@@ -3,8 +3,8 @@
 
 cd $(dirname $0)/..
 
-#if [[ ! -f build/locapoc.js ]]; then
-#  echo "ERR049: Error, the file build/locapoc.js doesn't exist!"
+#if [[ ! -f dist/build/locapoc.js ]]; then
+#  echo "ERR049: Error, the file dist/build/locapoc.js doesn't exist!"
 #  echo "first run : npm run build"
 #  exit -1
 #fi
@@ -12,8 +12,19 @@ cd $(dirname $0)/..
 npx esbuild src/locapoc.ts \
   --bundle \
   --platform=node \
-  --banner:js="#! /usr/bin/env node" \
-  --outfile=dist/bin/bincli.cjs
+  --outfile=dist/bin/tmp_bincli.cjs
+
+cat <<SCREOF > dist/bin/bincli.cjs
+#! /usr/bin/env node
+const process = require("process");
+if( process.argv.length < 4 ){
+  process.argv.push(\`--directory=\${__dirname}/webui\`);
+}
+//console.log(process.argv);
+//console.log(process.env);
+SCREOF
+
+cat dist/bin/tmp_bincli.cjs >> dist/bin/bincli.cjs
 
 ### copy files
 #mkdir -p dist/bin
