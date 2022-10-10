@@ -3,8 +3,8 @@
 
 cd $(dirname $0)/..
 
-if [[ ! -f dist/bundle/locapoc.mjs ]]; then
-  echo "ERR045: Error, the file dist/bundle/locapoc.mjs doesn't exist!"
+if [[ ! -f dist/bundle/locapoc.cjs ]]; then
+  echo "ERR045: Error, the file dist/bundle/locapoc.cjs doesn't exist!"
   echo "first run : npm run dist:bundle"
   exit -1
 fi
@@ -17,7 +17,7 @@ NODEAPP="${ZIPNAME}/locapoc"
 mkdir -p dist/${NODEAPP}
 cd dist
 cp -a ../webui ${NODEAPP}/
-cp ../dist/bundle/locapoc.mjs ${NODEAPP}/
+cp ../dist/bundle/locapoc.cjs ${NODEAPP}/
 cp ../scr/linux_runs_locapoc.sh ${ZIPNAME}/
 cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
 

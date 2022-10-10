@@ -40,5 +40,5 @@ npm -v
 ### start the node-app
 cd $(dirname $0)
 pwd
-node locapoc/locapoc.mjs --directory=locapoc/webui --browser=true
+node locapoc/locapoc.cjs --directory=locapoc/webui --browser=true
 

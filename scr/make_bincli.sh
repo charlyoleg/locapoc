@@ -12,9 +12,8 @@ cd $(dirname $0)/..
 npx esbuild src/locapoc.ts \
   --bundle \
   --platform=node \
-  --format=esm \
   --banner:js="#! /usr/bin/env node" \
-  --outfile=dist/bin/bincli.mjs
+  --outfile=dist/bin/bincli.cjs
 
 ### copy files
 #mkdir -p dist/bin

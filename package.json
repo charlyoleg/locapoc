@@ -5,7 +5,7 @@
   "type": "module",
   "main": "dist/build/myrest.js",
   "bin": {
-    "locapoc": "dist/bin/bincli.mjs"
+    "locapoc": "dist/bin/bincli.cjs"
   },
   "files": [
     "dist/bin/webui/"
@@ -26,8 +26,8 @@
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check .",
     "dist:build": "tsc --build src/tsconfig.dist.json",
-    "dist:bundle": "esbuild src/locapoc.ts --bundle --platform=node --format=esm --outfile=dist/bundle/locapoc.mjs",
-    "run_dist": "node dist/bundle/locapoc.mjs --port 2022 --directory ./webui",
+    "dist:bundle": "esbuild src/locapoc.ts --bundle --platform=node --outfile=dist/bundle/locapoc.cjs",
+    "run_dist": "node dist/bundle/locapoc.cjs --port 2022 --directory ./webui",
     "make_bin": "scr/make_bincli.sh",
     "make_zip": "scr/make_zip.sh",
     "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",

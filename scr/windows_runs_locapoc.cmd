@@ -1,7 +1,7 @@
 @ECHO OFF
 
 :: windows_runs_locapoc.cmd
-:: It launchs locapoc.mjs
+:: It launchs locapoc.cjs
 
 ECHO Hello from windows_runs_locapoc.cmd
 
@@ -12,6 +12,6 @@ npm -v
 
 cd %~dp0
 pwd
-node locapoc.mjs --directory=webui --browser=true
+node locapoc.cjs --directory=webui --browser=true
 
 
