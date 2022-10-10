@@ -10,13 +10,13 @@ if [ $? -ne 0 ]; then
 fi
 
 ### kill the old remaining process
-echo "List of process to kill"
+echo "List of process with node-js locapoc"
 ps aux | grep node | grep -E 'locapoc\..?js'
-echo "End of list of process to kill"
+echo "End of list of process with node-js locapoc"
 OLDPROCESS=$(ps aux | grep node | grep -E 'locapoc\..?js' | awk '{print $2}')
 for iproc in ${OLDPROCESS}; do
-  echo "Kill process ${iproc}"
-  kill ${iproc}
+  echo "Want to kill process ${iproc}"
+  #kill ${iproc}
 done
 sleep 1
 OLDPROCESS=$(ps aux | grep node | grep -E 'locapoc\..?js')
