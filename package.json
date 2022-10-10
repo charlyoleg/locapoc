@@ -1,6 +1,6 @@
 {
   "name": "locapoc",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Proof of concept for a local app",
   "type": "module",
   "main": "dist/build/myrest.js",
