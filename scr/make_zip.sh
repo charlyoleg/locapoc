@@ -20,6 +20,8 @@ cp -a ../webui ${NODEAPP}/
 cp ../dist/bundle/locapoc.cjs ${NODEAPP}/
 cp ../scr/linux_runs_locapoc.sh ${ZIPNAME}/
 cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
+cp ../scr/locapoc_icon.svg ${ZIPNAME}/
+cp ../scr/install_ubuntu_desktop_icon.sh ${ZIPNAME}/
 
 ### fingerprint
 cat << EOF > ${NODEAPP}/webui/locapoc_fingerprint.txt
