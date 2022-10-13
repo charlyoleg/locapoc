@@ -24,7 +24,7 @@ We are using _commonjs_ because the _esm_ output for _node_ of _esbuild_ seems b
 zip-file with only the frontend
 -------------------------------
 
-TODO
+Under Linux you can use *open* or *sensible-browser* to create a launch-script. Html should not contain any absolute path. Only relative path will work with *file://*.
 
 
 npm package
