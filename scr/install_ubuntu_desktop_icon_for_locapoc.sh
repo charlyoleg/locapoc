@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # install_ubuntu_desktop_icon_for_locapoc.sh
 
-SCRIPTDIR=$(dirname $0)
-cd ${SCRIPTDIR}
+cd $(dirname $0)
+SCRIPTDIR=$(pwd)
+echo ${SCRIPTDIR}
 
 cat <<SCREOF > locapoc.desktop
 #! /usr/bin/env node
