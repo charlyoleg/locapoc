@@ -6,10 +6,10 @@ One of the goal of the proof-of-concept is to try different ways to deploy this 
 
 - zip-file with node-app and frontend
 - zip-file with only the frontend
-- npm package
-- AppImage
-- snap
-- debian package
+- [npm package](https://www.npmjs.com/)
+- [AppImage](https://appimage.org/)
+- [Snap](https://snapcraft.io/)
+- [Ubuntu package](https://packaging.ubuntu.com/html/)
 - a central static website
 
 
@@ -55,17 +55,23 @@ The way to get the directory of the running script has changed drastically betwe
 AppImage
 --------
 
+Using [AppImage](https://appimage.org/) ...
+
 I haven't found documented example for node-js app. So, I haven't investigated further.
 
 
 snap
 ----
 
+Using [Snap](https://snapcraft.io/) ...
+
 Using _core22_ wasn't really working. _snapcraft_ was running forever.
 
 
 debian package
 --------------
+
+Using [Ubuntu package](https://packaging.ubuntu.com/html/) or [Debian package](https://www.debian.org/doc/manuals/maint-guide/) ...
 
 _locapoc_ requires node v16. Ubuntu 22.04 provides node v12. So the debian package won't be straight forward.
 
