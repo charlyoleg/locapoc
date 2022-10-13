@@ -18,8 +18,11 @@ Type=Application
 Categories=Development
 SCREOF
 
+chmod u+x ./locapoc.desktop
+
 #desktop-file-install --dir=${HOME}/.local/share/applications ./locapoc.desktop
-desktop-file-install --dir=${HOME}/Desktop ./locapoc.desktop
+desktop-file-install --dir=${HOME}/Desktop --mode=764 ./locapoc.desktop
+#cp ./locapoc.desktop ${HOME}/Desktop/
 
 echo "INFO392: The Ubuntu desktop icon for locapoc has been installed!"
 
