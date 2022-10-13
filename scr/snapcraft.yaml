@@ -1,0 +1,20 @@
+name: locapoc
+version: '0.1.6'
+summary: A small prrof-of-concept for a local-gui app.
+description: |
+  Launch the gui
+    $ locapoc
+
+confinement: devmode
+base: core22
+
+parts:
+  locapoc:
+    plugin: npm
+    npm-include-node: true
+    npm-node-version: v18.10.0
+    source: https://github.com/charlyoleg/locapoc.git
+
+apps:
+  locapoc:
+    command: locapoc
