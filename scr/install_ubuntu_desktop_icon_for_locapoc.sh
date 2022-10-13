@@ -6,10 +6,9 @@ SCRIPTDIR=$(pwd)
 echo ${SCRIPTDIR}
 
 cat <<SCREOF > locapoc.desktop
-#! /usr/bin/env node
 [Desktop Entry]
 Encoding=UTF-8
-Version=0.1.6
+Version=1.0
 Name=locapoc
 Comment=Proof-of-Concept for local app
 Exec=${SCRIPTDIR}/linux_runs_locapoc.sh
@@ -19,4 +18,8 @@ Type=Application
 Categories=Development
 SCREOF
 
+#desktop-file-install --dir=${HOME}/.local/share/applications ./locapoc.desktop
+desktop-file-install --dir=${HOME}/Desktop ./locapoc.desktop
+
+echo "INFO392: The Ubuntu desktop icon for locapoc has been installed!"
 
