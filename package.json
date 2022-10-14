@@ -30,9 +30,10 @@
     "run_dist": "node dist/bundle/locapoc.cjs --port 2022 --directory ./webui",
     "make_bin": "scr/make_bincli.sh",
     "make_zip": "scr/make_zip.sh",
-    "run_package": "dist/locapoc_v*/linux_runs_locapoc.sh",
+    "run_prezip": "dist/locapoc_v*/linux_runs_locapoc.sh",
+    "open_frontend_only": "sensible-browser dist/frontend_only/webui/index.html",
     "make_all": "run-s build lint prettier:check dist:build dist:bundle make_bin make_zip",
-    "full_loop": "run-s clean make_all run_package",
+    "full_loop": "run-s clean make_all run_prezip",
     "clean_make_all": "run-s clean make_all",
     "clean": "shx rm -fr build dist swagger.json"
   },

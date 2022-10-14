@@ -22,6 +22,9 @@ cp ../scr/linux_runs_locapoc.sh ${ZIPNAME}/
 cp ../scr/windows_runs_locapoc.cmd ${ZIPNAME}/
 cp ../scr/locapoc_icon.svg ${ZIPNAME}/
 cp ../scr/install_ubuntu_desktop_icon_for_locapoc.sh ${ZIPNAME}/
+### copy files for frontend only
+mkdir -p frontend_only
+cp -a ../webui frontend_only/
 
 ### fingerprint
 cat << EOF > ${NODEAPP}/webui/locapoc_fingerprint.txt
